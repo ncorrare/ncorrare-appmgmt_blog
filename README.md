@@ -60,8 +60,9 @@ and then use puppet-job to trigger a run.
 ## Reference
 
 There are two defined types in the modules for the two different server roles in this application.
-Appmgmt_blog::Db is the MySQL Database
-Appmgmt_blog::Web is the Apache Servers running Wordpress
+
+- Appmgmt_blog::Db is the MySQL Database
+- Appmgmt_blog::Web is the Apache Servers running Wordpress
 
 ## Limitations
 
