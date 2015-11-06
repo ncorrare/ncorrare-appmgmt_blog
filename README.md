@@ -1,4 +1,4 @@
-# appmgmt_blog
+# appmgmt_blog: A module to deploy Wordpress using Application Orchestration
 
 #### Table of Contents
 
@@ -15,36 +15,34 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+This module integrates three components available in the forge: MySQL, Apache and Wordpress,
+into a very simple Application Orchestration workflow.
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module introduces a SQL Capability, which will be configured in Wordpress for the initial
+deployment of the blogging platform.
 
 ## Setup
 
 ### What appmgmt_blog affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* Installs a number of packages in different servers, mysql-server, mysql, php, httpd, php-mysql, php-gd
+* Disables the firewall!! (Warning!).
+* Enables MySQL to listen on all interfaces (Warning!).
+* Creates a MySQL user for wordpress (with all privileges, and with permissions to login from every host).
+* Deploys wordpress on a specified directory.
+* Creates a virtualhost.
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements 
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+Please review the module dependencies on metadata.json.
 
 ### Beginning with appmgmt_blog
 
+Define a new site construct in your site.pp, specifying which nodes should run each role.
+
+```puppet
 site {
   appmgmt_blog { 'example':
       nodes           => {
@@ -53,30 +51,22 @@ site {
     }
   }
 }
+```
 
+and then use puppet-job to trigger a run.
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+There are two defined types in the modules for the two different server roles in this application.
+Appmgmt_blog::Db is the MySQL Database
+Appmgmt_blog::Web is the Apache Servers running Wordpress
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+This has only been tested on Centos 6.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+Feel free to hack around. This is based on the latest specification of the language (or so I've been told).
