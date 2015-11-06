@@ -63,6 +63,7 @@ There are two defined types in the modules for the two different server roles in
 
 - Appmgmt_blog::Db is the MySQL Database
 - Appmgmt_blog::Web is the Apache Servers running Wordpress
+Check the resource is exported on PuppetDB with curl -X GET http://localhost:8080/pdb/query/v4/resources/Sql
 
 ## Limitations
 
