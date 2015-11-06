@@ -1,0 +1,17 @@
+{
+  "name": "ncorrare-appmgmt_blog",
+  "version": "0.1.0",
+  "author": "ncorrare",
+  "summary": null,
+  "license": "Apache-2.0",
+  "source": "https://github.com/ncorrare/ncorrare-appmgmt_blog.git",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 4.9.0"},
+    {"name":"puppetlabs-mysql","version_requirement":">= 3.6.0"},
+    {"name":"puppetlabs-apache","version_requirement":">= 1.6.0"},
+    {"name":"hunner-wordpress","version_requirement":">= 1.0.0"}
+  ]
+}
+
